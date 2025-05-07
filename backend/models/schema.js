@@ -1,42 +1,45 @@
 const mongoose = require('mongoose');
 
-//Ficha de Treino
+// Subdocumento de exercício (sem _id)
+const exerciseSchema = new mongoose.Schema({
+  name: { type: String },
+  series: { type: String }
+}, { _id: false });
+
+// Ficha de treino
 const workoutSchema = new mongoose.Schema({
-    muscleGroup: { type: String }, // Grupo muscular que o exercício trabalha
-    days: {type: String},
-    exercises:[
-        {
-        name:{type: String}, //Nome exercicio
-        series: {type: String} // Series e Repeticoes
-        }
-    ]
-});
+  muscleGroup: { type: String },
+  days: { type: String },
+  exercises: [exerciseSchema] // sem _id em cada exercício
+}, { _id: false });
+
+// Subdocumento de refeição (sem _id)
+const mealSchema = new mongoose.Schema({
+  days: { type: String },
+  mealsType: { type: String },
+  food: { type: [String] }
+}, { _id: false });
 
 // Nutrição
-const nutritionSchema = new mongoose.Schema({   
-    dietType:{type: String}, //Ganho de massa muscular
-    meals: [
-        {
-            days:{type: String},
-            mealsType:{type: String}, //Cafe da manha
-            food:{type: [String]} // Lista Alimentos
-        }
-    ]
-})
+const nutritionSchema = new mongoose.Schema({
+  dietType: { type: String },
+  meals: [mealSchema] // sem _id em cada refeição
+});
 
-const PlansSchema = new mongoose.Schema({
-    workout: workoutSchema,
-    nutrition: nutritionSchema
-})
+// Plano (sem _id)
+const plansSchema = new mongoose.Schema({
+  workout: workoutSchema,
+  nutrition: nutritionSchema
+});
 
-
+// Usuário
 const userSchema = new mongoose.Schema({
-    name:{type: String},
-    email:{type: String},
-    password:{type: String},
-    height:{type: Number},
-    weight: {type: Number},
-    plans: PlansSchema
+  name: { type: String },
+  email: { type: String },
+  password: { type: String },
+  height: { type: Number },
+  weight: { type: Number },
+  plans: plansSchema
 });
 
 module.exports = mongoose.model('User', userSchema);
