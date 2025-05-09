@@ -3,7 +3,7 @@
   "collections": [
     {
       "GUID": "89b8cfe3-b1df-44ff-9382-f62277370605",
-      "collectionName": "users",
+      "collectionName": "Usuarios",
       "type": "object",
       "properties": [
         {
@@ -17,7 +17,7 @@
           "error": {}
         },
         {
-          "name": "name",
+          "name": "nome",
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "string",
@@ -35,146 +35,47 @@
           "error": {}
         },
         {
-          "name": "password",
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "string",
           "GUID": "68506d0b-dcce-4d74-a576-583897085021",
           "required": true,
+          "name": "senha",
           "error": {}
         },
         {
-          "name": "plans",
+          "name": "peso",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "primaryKey": false,
+          "GUID": "45746207-90eb-44c2-a463-c83634419155",
+          "error": {}
+        },
+        {
+          "name": "altura",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "75742aaa-b588-43fa-b1b4-bb4e47083c72",
+          "error": {}
+        },
+        {
+          "name": "observações",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "47b3df43-01fd-4ccd-b1c8-436e0edd31d0",
+          "error": {}
+        },
+        {
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "document",
-          "properties": [
-            {
-              "name": "workout",
-              "hackoladeMeta": {},
-              "isActivated": true,
-              "type": "document",
-              "properties": [
-                {
-                  "name": "days",
-                  "hackoladeMeta": {},
-                  "isActivated": true,
-                  "type": "string",
-                  "GUID": "7852b76f-a70c-4d9e-829d-6fd571a5cd03",
-                  "error": {}
-                },
-                {
-                  "name": "groupMuscle",
-                  "hackoladeMeta": {},
-                  "isActivated": true,
-                  "type": "string",
-                  "GUID": "ee81d008-e660-4699-8a5d-e4505d8e5ea0",
-                  "error": {}
-                },
-                {
-                  "name": "exercises",
-                  "hackoladeMeta": {},
-                  "isActivated": true,
-                  "type": "array",
-                  "properties": [
-                    {
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "string",
-                      "GUID": "9c3c7fb4-63c6-43f5-a61a-9ef9d922adbc",
-                      "arrayItem": true,
-                      "displayName": "name",
-                      "error": {}
-                    },
-                    {
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "string",
-                      "GUID": "87ab8c2a-b64f-4d58-960b-ed6e54769447",
-                      "arrayItem": true,
-                      "displayName": "series",
-                      "error": {}
-                    }
-                  ],
-                  "additionalItems": true,
-                  "GUID": "b785160f-675f-4fcb-b4b7-16e7600e742d",
-                  "error": {}
-                }
-              ],
-              "additionalProperties": false,
-              "GUID": "80452deb-5de8-4aa3-910d-27043c2b8051",
-              "error": {}
-            },
-            {
-              "hackoladeMeta": {},
-              "isActivated": true,
-              "type": "document",
-              "properties": [
-                {
-                  "hackoladeMeta": {},
-                  "isActivated": true,
-                  "type": "string",
-                  "GUID": "5eb23ebc-89f3-4ffa-a5d7-e55026dda6da",
-                  "name": "dietType",
-                  "error": {}
-                },
-                {
-                  "name": "meals",
-                  "hackoladeMeta": {},
-                  "isActivated": true,
-                  "type": "array",
-                  "properties": [
-                    {
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "string",
-                      "GUID": "1ab0e836-3464-4745-9336-6f214d163780",
-                      "arrayItem": true,
-                      "displayName": "days",
-                      "error": {}
-                    },
-                    {
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "string",
-                      "GUID": "c22a2d19-83b4-4f6f-9f83-efa878513f5f",
-                      "arrayItem": true,
-                      "displayName": "melasType",
-                      "error": {}
-                    },
-                    {
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "array",
-                      "properties": [
-                        {
-                          "hackoladeMeta": {},
-                          "isActivated": true,
-                          "type": "string",
-                          "GUID": "1e239f19-0c21-4b33-a283-2eb826a1298b",
-                          "arrayItem": true
-                        }
-                      ],
-                      "additionalItems": true,
-                      "GUID": "579a45e3-1542-4ebc-8e58-952c4911006b",
-                      "arrayItem": true,
-                      "displayName": "food",
-                      "error": {}
-                    }
-                  ],
-                  "additionalItems": true,
-                  "GUID": "626e6830-9666-4e72-bbef-4940b812a706",
-                  "error": {}
-                }
-              ],
-              "additionalProperties": false,
-              "GUID": "fdd86eee-348b-4ad7-84d2-38a11dc8fb77",
-              "name": "nutrtion",
-              "error": {}
-            }
-          ],
+          "properties": [],
           "additionalProperties": false,
-          "GUID": "07e18e08-8cf7-4851-98d9-55e2eaec4aaf",
+          "GUID": "9fc7008a-c49d-4d5f-ae1f-c8ffe38be9f9",
+          "name": "plano",
           "error": {}
         }
       ],
@@ -196,6 +97,185 @@
         "collation": "null"
       },
       "bucketId": "765ffba0-106e-42ad-b0d8-c6dc74d56dd7"
+    },
+    {
+      "GUID": "b22e0cac-37c1-44f5-93ef-8336297e1af2",
+      "collectionName": "Ficha Treinos",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "error": {},
+          "GUID": "593fb1e9-0fda-41dd-a940-c83001e9d288"
+        },
+        {
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "85ad5631-d122-4709-9c27-211e2d973ad0",
+          "name": "tipoDeTreino",
+          "error": {}
+        },
+        {
+          "name": "dias",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "document",
+          "properties": [
+            {
+              "name": "grupoMusccular",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "string",
+              "GUID": "e801d924-d348-463a-80d1-c888b694b65e",
+              "error": {}
+            },
+            {
+              "name": "exercicios",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "array",
+              "properties": [
+                {
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "string",
+                  "GUID": "b6fb41b8-4a8f-4c30-b5de-bdf2e8afae59",
+                  "arrayItem": true,
+                  "displayName": "nome",
+                  "error": {}
+                },
+                {
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "numeric",
+                  "error": {},
+                  "GUID": "65013346-7e4e-47ad-9e8d-47f35b576134",
+                  "arrayItem": true,
+                  "displayName": "series"
+                },
+                {
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "numeric",
+                  "error": {},
+                  "GUID": "2ba6a7e2-3a86-4865-8423-bdc7641aeb94",
+                  "arrayItem": true,
+                  "displayName": "repeticoes"
+                }
+              ],
+              "additionalItems": true,
+              "GUID": "87ebf426-ddb7-49fc-8512-6f54557e3ca4",
+              "error": {}
+            }
+          ],
+          "additionalProperties": false,
+          "error": {},
+          "GUID": "71a9c95d-33ff-4bbf-a2c5-4bf98188918b"
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "a3c3c3bb-d51d-4377-b744-2558d7766dd7"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "collectionUsers": [],
+      "indexes": [],
+      "collation": {},
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "bucketId": "765ffba0-106e-42ad-b0d8-c6dc74d56dd7"
+    },
+    {
+      "GUID": "fe248a9f-a8a5-406b-b4e5-e8120f0e01d0",
+      "collectionName": "Dieta",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "error": {},
+          "GUID": "7d2715e8-cff7-4e9a-b3a0-f3f15d902a17"
+        },
+        {
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "bd1cb7d9-4576-4571-b8dd-aad0b471f97d",
+          "name": "tipoDeDieta",
+          "error": {}
+        },
+        {
+          "name": "dias",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "document",
+          "properties": [
+            {
+              "name": "refeicoes",
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "array",
+              "properties": [
+                {
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "string",
+                  "GUID": "406ea637-8edf-4284-a31e-fc2dd2d0a930",
+                  "arrayItem": true,
+                  "displayName": "tipo",
+                  "error": {}
+                },
+                {
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "string",
+                  "GUID": "f5c49c3b-6c00-4b1d-b5ce-06475d2b114a",
+                  "arrayItem": true,
+                  "displayName": "descricao",
+                  "error": {}
+                }
+              ],
+              "additionalItems": true,
+              "error": {},
+              "GUID": "67bf4ccf-25b0-4b83-b2ac-fedaaf9f600c"
+            }
+          ],
+          "additionalProperties": false,
+          "GUID": "9f4f358a-e0cd-47bb-b668-13b9410cda21",
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "fce5fc12-348f-4fcf-a0b1-514ed765614a"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Off",
+      "validationAction": "Warn",
+      "storageEngineName": "WiredTiger",
+      "collectionUsers": [],
+      "indexes": [],
+      "collation": {},
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "bucketId": "765ffba0-106e-42ad-b0d8-c6dc74d56dd7"
     }
   ],
   "buckets": [
@@ -203,7 +283,9 @@
       "name": "FitTrack",
       "type": "bucket",
       "collectionIds": [
-        "89b8cfe3-b1df-44ff-9382-f62277370605"
+        "89b8cfe3-b1df-44ff-9382-f62277370605",
+        "b22e0cac-37c1-44f5-93ef-8336297e1af2",
+        "fe248a9f-a8a5-406b-b4e5-e8120f0e01d0"
       ],
       "backgroundColor": {
         "r": 216,
@@ -222,20 +304,27 @@
   "diagramViews": [],
   "idToNameHashTable": {
     "765ffba0-106e-42ad-b0d8-c6dc74d56dd7": "FitTrack",
-    "89b8cfe3-b1df-44ff-9382-f62277370605": "users",
+    "89b8cfe3-b1df-44ff-9382-f62277370605": "Usuarios",
     "02bc2c11-5652-4bdf-b5df-73f8c42999f2": "_id",
-    "5fbd1519-8cf5-4c7c-830e-979e2b025318": "name",
+    "5fbd1519-8cf5-4c7c-830e-979e2b025318": "nome",
     "c5f5e6f1-6c9a-48a6-9725-0fa3b247baec": "email",
-    "68506d0b-dcce-4d74-a576-583897085021": "password",
-    "07e18e08-8cf7-4851-98d9-55e2eaec4aaf": "plans",
-    "fdd86eee-348b-4ad7-84d2-38a11dc8fb77": "nutrtion",
+    "68506d0b-dcce-4d74-a576-583897085021": "senha",
     "5867d6aa-5d50-4758-a453-8bc8c052b718": "Ficha",
-    "5eb23ebc-89f3-4ffa-a5d7-e55026dda6da": "dietType",
-    "626e6830-9666-4e72-bbef-4940b812a706": "meals",
-    "80452deb-5de8-4aa3-910d-27043c2b8051": "workout",
-    "7852b76f-a70c-4d9e-829d-6fd571a5cd03": "days",
-    "ee81d008-e660-4699-8a5d-e4505d8e5ea0": "groupMuscle",
-    "b785160f-675f-4fcb-b4b7-16e7600e742d": "exercises"
+    "45746207-90eb-44c2-a463-c83634419155": "peso",
+    "75742aaa-b588-43fa-b1b4-bb4e47083c72": "altura",
+    "b22e0cac-37c1-44f5-93ef-8336297e1af2": "Ficha Treinos",
+    "593fb1e9-0fda-41dd-a940-c83001e9d288": "_id",
+    "71a9c95d-33ff-4bbf-a2c5-4bf98188918b": "dias",
+    "85ad5631-d122-4709-9c27-211e2d973ad0": "tipoDeTreino",
+    "fe248a9f-a8a5-406b-b4e5-e8120f0e01d0": "Dieta",
+    "7d2715e8-cff7-4e9a-b3a0-f3f15d902a17": "_id",
+    "bd1cb7d9-4576-4571-b8dd-aad0b471f97d": "tipoDeDieta",
+    "47b3df43-01fd-4ccd-b1c8-436e0edd31d0": "observações",
+    "e801d924-d348-463a-80d1-c888b694b65e": "grupoMusccular",
+    "87ebf426-ddb7-49fc-8512-6f54557e3ca4": "exercicios",
+    "9f4f358a-e0cd-47bb-b668-13b9410cda21": "dias",
+    "67bf4ccf-25b0-4b83-b2ac-fedaaf9f600c": "refeicoes",
+    "9fc7008a-c49d-4d5f-ae1f-c8ffe38be9f9": "plano"
   },
   "definitions": {
     "type": "definitions",
@@ -272,7 +361,7 @@
       "modelName": false
     }
   },
-  "lastModifTS": "2025-04-27T18:26:43.069Z",
+  "lastModifTS": "2025-05-09T00:08:22.516Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
@@ -287,10 +376,26 @@
         "erd": [
           {
             "GUID": "89b8cfe3-b1df-44ff-9382-f62277370605",
-            "x": 1358.8503631961253,
-            "y": 1238.6237288135583,
-            "width": 553,
-            "height": 490,
+            "x": 1351.0503631961253,
+            "y": 1318.6237288135585,
+            "width": 555,
+            "height": 329,
+            "color": {}
+          },
+          {
+            "GUID": "b22e0cac-37c1-44f5-93ef-8336297e1af2",
+            "x": 1928.0503631961255,
+            "y": 1237.6237288135585,
+            "width": 400,
+            "height": 217,
+            "color": {}
+          },
+          {
+            "GUID": "fe248a9f-a8a5-406b-b4e5-e8120f0e01d0",
+            "x": 1930.0503631961255,
+            "y": 1500.6237288135585,
+            "width": 395,
+            "height": 241,
             "color": {}
           }
         ],
@@ -302,12 +407,14 @@
         },
         "buckets": [
           {
-            "x": 1318.8503631961253,
-            "y": 1198.6237288135583,
+            "x": 1311.0503631961253,
+            "y": 1197.6237288135585,
             "GUID": "765ffba0-106e-42ad-b0d8-c6dc74d56dd7"
           }
         ],
-        "collapsedNodes": [],
+        "collapsedNodes": [
+          "b22e0cac-37c1-44f5-93ef-8336297e1af271a9c95d-33ff-4bbf-a2c5-4bf98188918b87ebf426-ddb7-49fc-8512-6f54557e3ca4"
+        ],
         "activeRelationship": "",
         "activeRelationshipFields": {
           "childField": [],
@@ -338,6 +445,16 @@
             "autoWidth": false,
             "autoHeight": false,
             "GUID": "89b8cfe3-b1df-44ff-9382-f62277370605"
+          },
+          {
+            "autoWidth": false,
+            "autoHeight": false,
+            "GUID": "b22e0cac-37c1-44f5-93ef-8336297e1af2"
+          },
+          {
+            "autoWidth": false,
+            "autoHeight": false,
+            "GUID": "fe248a9f-a8a5-406b-b4e5-e8120f0e01d0"
           }
         ],
         "relationshipUpdateDisabled": false
