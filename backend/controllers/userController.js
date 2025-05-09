@@ -3,8 +3,8 @@ const User = require("../models/schema");
 //GET
 exports.getUsers = async (req, res) => {
   try {
-    const schema = await User.find();
-    res.json(schema);
+    const users = await User.find();
+    res.json(users);
   } catch (error) {
     res.status(500).json({ message: "Erro ao buscar dados", error });
   }
@@ -13,8 +13,8 @@ exports.getUsers = async (req, res) => {
 //POST
 exports.createUsers = async (req, res) => {
   try {
-    const { name, email, password, height, weight, plans } = req.body; //TEMP
-    const newUser = new User({ name, email, password, height, weight, plans });
+    const { nome, email, senha, peso, altura, observacoes, planos } = req.body; //TEMP
+    const newUser = new User({ nome, email, senha, peso, altura, observacoes, planos });
     const saved = await newUser.save();
     res.status(201).json(saved);
   } catch (error) {
@@ -28,21 +28,21 @@ exports.createUsers = async (req, res) => {
 exports.updateUsers = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email, height, weight, plans } = req.body;
+    const { nome, email, peso, altura, observacoes, planos } = req.body;
 
     const updateData = await User.findByIdAndUpdate(
       id,
-      { name, email, height, weight, plans },
+      { nome, email, peso, altura, observacoes, planos },
       { new: true }
     );
 
     if (!updateData) {
-      return res.status(404).json({ message: "Produto não atualizado" });
+      return res.status(404).json({ message: "Usuário não atualizado" });
     }
 
     res.json(updateData);
   } catch (error) {
-    res.status(500).json({ message: "Erro atualizar o produto", error });
+    res.status(500).json({ message: "Erro atualizar o usuário", error });
   }
 };
 

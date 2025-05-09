@@ -1,45 +1,57 @@
 const mongoose = require('mongoose');
 
-// Subdocumento de exercício (sem _id)
+// Subdocumento de exercício
 const exerciseSchema = new mongoose.Schema({
-  name: { type: String },
-  series: { type: String }
+  nome: String,
+  series: Number,
+  repeticoes: Number,
+  duracao: String // usado em exercícios como "Corrida"
 }, { _id: false });
 
-// Ficha de treino
-const workoutSchema = new mongoose.Schema({
-  muscleGroup: { type: String },
-  days: { type: String },
-  exercises: [exerciseSchema] // sem _id em cada exercício
+// Subdocumento de dia de treino
+const treinoDiaSchema = new mongoose.Schema({
+  dia: String,
+  exercicios: [exerciseSchema]
 }, { _id: false });
 
-// Subdocumento de refeição (sem _id)
-const mealSchema = new mongoose.Schema({
-  days: { type: String },
-  mealsType: { type: String },
-  food: { type: [String] }
+// Treino completo
+const treinoSchema = new mongoose.Schema({
+  dias: [treinoDiaSchema]
 }, { _id: false });
 
-// Nutrição
-const nutritionSchema = new mongoose.Schema({
-  dietType: { type: String },
-  meals: [mealSchema] // sem _id em cada refeição
-});
+// Subdocumento de refeição
+const refeicaoSchema = new mongoose.Schema({
+  tipo: String,
+  descricao: String
+}, { _id: false });
 
-// Plano (sem _id)
-const plansSchema = new mongoose.Schema({
-  workout: workoutSchema,
-  nutrition: nutritionSchema
-});
+// Subdocumento de dia de alimentação
+const alimentacaoDiaSchema = new mongoose.Schema({
+  dia: String,
+  refeicoes: [refeicaoSchema]
+}, { _id: false });
+
+// Alimentação completa
+const alimentacaoSchema = new mongoose.Schema({
+  dias: [alimentacaoDiaSchema]
+}, { _id: false });
+
+// Plano completo
+const planosSchema = new mongoose.Schema({
+  treino: treinoSchema,
+  alimentacao: alimentacaoSchema
+}, { _id: false });
 
 // Usuário
 const userSchema = new mongoose.Schema({
-  name: { type: String },
-  email: { type: String },
-  password: { type: String },
-  height: { type: Number },
-  weight: { type: Number },
-  plans: plansSchema
+  _id: String,
+  nome: String,
+  email: String,
+  senha: String,
+  peso: Number,
+  altura: Number,
+  observacoes: [String],
+  planos: planosSchema
 });
 
 module.exports = mongoose.model('User', userSchema);
