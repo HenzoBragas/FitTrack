@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const userRouter = require("./router/userRouter");
+const treinoRouter = require("./router/treinoRouter");
+const dietaRouter = require("./router/dietaRouter");
 
 const app = express();
 app.use(cors());
@@ -17,8 +19,9 @@ mongoose
   .then(() => console.log("Conectado ao Atlas"))
   .catch((error) => console.error("Erro ao conectar ao Atlas", error));
 
-app.use("/fit", userRouter);
-
+app.use("/user", userRouter);
+app.use("/treino", treinoRouter);
+app.use("/dieta", dietaRouter);
 //Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
