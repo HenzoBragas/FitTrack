@@ -95,10 +95,10 @@ Se ocorrer algum erro verifique se está você na raiz do projeto e execute nova
 Você pode acessar a API diretamente pelo back-end hospedado no Render:
 
 ```
-https://fittrack-ratz.onrender.com
+https://fittrack-mq85.onrender.com
 ```
 
-Utilize essa URL no Insomnia ou Postman com as rotas:
+Utilize essa URL no  Postman com as rotas:
 - `/user`
 - `/treino`
 - `/dieta`
