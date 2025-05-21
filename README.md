@@ -43,7 +43,7 @@ Cada modelo é independente, mas conectado por meio de referências (`treino_id`
 ├── package.json           # Gerenciador de dependências
 ├── package-lock.json      # dependências do projeto
 ├── node_modules           # dependências do projeto
-├── modelagem.png          # Modelagem da documentação
+├── assest                 #Imagem da Modlelagem 
 ├── README.md              # Documentação do projeto
 
 ```
