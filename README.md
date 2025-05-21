@@ -16,7 +16,7 @@ O projeto **Fit Track** foi desenvolvido com o objetivo de facilitar o controle 
 Essa API pode servir como base para uma aplicação front-end mobile ou web, facilitando a organização de rotinas fitness personalizadas.
 ### Modelagem
 
-## ![modelagem](modelagem.png)
+## ![modelagem](./assest/modelagem.png)
 
 
 
