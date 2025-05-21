@@ -103,6 +103,23 @@ Utilize essa URL no  Postman com as rotas:
 - `/treino`
 - `/dieta`
 
+### 📝 3. Crie uma nova requisição
+Abra o Postman
+
+Clique em "New" > "HTTP Request"
+
+Escolha o método da requisição (ex: POST, GET, PUT, DELETE)
+
+No campo de URL, insira o endpoint. Exemplo para criar um treino:
+```
+https://fittrack-mq85.onrender.com/treino
+```
+ou 
+```
+http://localhost:5000/treino
+```
+
+
 
 ---
 
