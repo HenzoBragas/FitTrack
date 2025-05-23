@@ -13,7 +13,13 @@ O projeto **Fit Track** foi desenvolvido com o objetivo de facilitar o controle 
 - Registrar detalhes como exercícios, tempos de descanso, refeições, horários.
 
 Essa API pode servir como base para uma aplicação front-end mobile ou web, facilitando a organização de rotinas fitness personalizadas.
+<<<<<<< HEAD
 ### Modelagem do  Hackloade
+=======
+### Modelagem
+
+## ![modelagem](./assest/modelagem.png)
+>>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
 
 ## ![modelagem hackloade](./assets/modelagem.png)
 
@@ -50,6 +56,10 @@ O campo "observações" no modelo de usuário é destinado ao registro de pendê
 ├── package.json           # Gerenciador de dependências
 ├── package-lock.json      # dependências do projeto
 ├── node_modules           # dependências do projeto
+<<<<<<< HEAD
+=======
+├── assest                 #Imagem da Modlelagem 
+>>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
 ├── README.md              # Documentação do projeto
 
 ```
@@ -95,11 +105,26 @@ Conectado ao Atlas
 ```
 #### Se ocorrer algum erro verifique se você está na raiz do projeto e execute novamente
 
+<<<<<<< HEAD
 #### Utilize essa URL no Postman como as rotas:
+=======
+---
+
+### 🌐 Execução Remota
+
+Você pode acessar a API diretamente pelo back-end hospedado no Render:
+
+```
+https://fittrack-mq85.onrender.com
+```
+
+Utilize essa URL no  Postman com as rotas:
+>>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
 - `/user`
 - `/treino`
 - `/dieta`
 
+<<<<<<< HEAD
 ## 🌐 Back-end Remoto
 Você também pode acessar o back-end hospedado remotamente pela platoforma Render:
 ```
@@ -108,6 +133,25 @@ https://fittrack-api.onrender.com
 Utilize essas URLs como base no Postman:
 ```
 https://fittrack-api.onrender.com/user
+=======
+### 📝 3. Crie uma nova requisição
+Abra o Postman
+
+Clique em "New" > "HTTP Request"
+
+Escolha o método da requisição (ex: POST, GET, PUT, DELETE)
+
+No campo de URL, insira o endpoint. Exemplo para criar um treino:
+```
+https://fittrack-mq85.onrender.com/treino
+```
+ou 
+```
+http://localhost:5000/treino
+```
+
+
+>>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
 
 https://fittrack-api.onrender.com/treino
 
@@ -308,3 +352,7 @@ Henzo Bragas Da Silva
 
 Kaue Gahetti
 
+<<<<<<< HEAD
+=======
+---
+>>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
