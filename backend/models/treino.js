@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const ExerciciesSchema = new mongoose.Schema({
-    nome: String,
-    series: Number,
-    repeticoes: Number
-}, {_id: false});
-
-const TreinoSchema = new mongoose.Schema({
-    nome: String,
-    descricao: String,
-    tempo: String,
-    categoria: String,
-    data: Date,
-    ficha: [ExerciciesSchema]
-});
+const TreinoSchema = new Schema({
+  nome: String,
+  tempo: Number,
+  data: Date,
+  fichas: [{
+    nomeFicha: String,
+    exercicios: [{
+      nome: String,
+      series: Number,
+      repeticoes: Number,
+      tempoDescanso: String
+    }]
+  }]
+})
 
 module.exports = mongoose.model('Treino', TreinoSchema);

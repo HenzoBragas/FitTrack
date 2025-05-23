@@ -1,16 +1,19 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const RefeicaoSchema = new mongoose.Schema({
-    nome:  String,
-    horario: String,
-    descricao: [String]
-}, {_id: false});
-
-const DietaSchema = new mongoose.Schema({
+const DietaSchema =  new Schema({
     nome: String,
-    descricao: String,
-    data: String,
-    alimentacao: [RefeicaoSchema]
+    dataInicio: Date,
+    dataFim: Date,
+    objetivo: String,
+    refeicoes: [{
+        tipo: String,
+        horario: Number,
+        alimentos: [{
+            nome: String,
+            quantidade: String,
+     } ]
+    }]
 });
 
 module.exports = mongoose.model('Dieta', DietaSchema);

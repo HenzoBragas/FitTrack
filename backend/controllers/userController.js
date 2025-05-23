@@ -2,8 +2,9 @@ const User = require("../models/users");
 const Treino = require("../models/treino");
 const Dieta = require("../models/dieta");
 
-//GET
-exports.getUsers = async (req, res) => {
+// GET - Listar todos os usuarios
+
+exports.getUser = async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -11,22 +12,11 @@ exports.getUsers = async (req, res) => {
     res.status(500).json({ message: "Erro ao buscar dados", error });
   }
 };
-// POST
-exports.createUsers = async (req, res) => {
+// POST - Cria um novo p
+exports.createUser = async (req, res) => {
   try {
-    const {
-      nome,
-      cpf,
-      email,
-      senha,
-      idade,
-      peso,
-      altura,
-      observacoes,
-      treino_id,
-      dieta_id,
-    } = req.body;
-
+    const newUser = new User(req.body);
+    const saved = await newUser.save();
     // Busca treino e dieta pelo id
     const treino = await Treino.findById(treino_id);
     const dieta = await Dieta.findById(dieta_id);
@@ -34,83 +24,36 @@ exports.createUsers = async (req, res) => {
     if (!treino || !dieta) {
       return res.status(404).json({ message: "Treino ou Dieta não encontrados" });
     }
-
-    const newUser = new User({
-      nome,
-      cpf,
-      email,
-      senha,
-      idade,
-      peso,
-      altura,
-      observacoes,
-      treinos: [{
-        treino_id: treino._id,
-        nome: treino.nome,
-        data: new Date().toISOString().slice(0,10) 
-      }],
-      dietas: [{
-        dieta_id: dieta._id,
-        nome: dieta.nome,
-        data: new Date().toISOString().slice(0,10)
-      }]
-    });
-
-    const saved = await newUser.save();
     res.status(201).json(saved);
   } catch (error) {
     res.status(500).json({ message: "Não foi possível adicionar os dados", error });
   }
 };
 
-//PUT
-exports.updateUsers = async (req, res) => {
+// PUT - Atualizar um treino pelo ID
+exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const {
-      nome,
-      email,
-      senha,
-      idade,
-      peso,
-      altura,
-      observacoes,
-      treino_id,
-      dieta_id,
-    } = req.body;
-
-    const updateData = await User.findByIdAndUpdate(id, {
-      nome,
-      email,
-      senha,
-      idade,
-      peso,
-      altura,
-      observacoes,
-      treino_id,
-      dieta_id,
-    },
-    {new: true}
-  );
-
-    if (!updateData) {
+    const updateUser = await User.findByIdAndUpdate();
+  
+    if (!updateUser) {
       return res.status(404).json({ message: "Usuário não encontrado" });
     }
 
-    res.json(updateData);
+    res.json(updateUser);
   } catch (error) {
     res.status(500).json({ message: "Erro atualizar o usuário", error });
   }
 };
 
-//DELETE
-exports.deleteUsers = async (req, res) => {
+// DELETE - Remover um treino pelo ID
+exports.deleteUser= async (req, res) => {
   try {
     const { id } = req.params;
 
-    const deleteData = await User.findByIdAndDelete(id);
+    const userDelete = await User.findByIdAndDelete(id);
 
-    if (!deleteData) {
+    if (!userDelete) {
       return res.status(404).json({ message: "Dado não encontrado" });
     }
     res.json({ message: "Usuário deletado com sucesso" });
