@@ -201,10 +201,22 @@ https://fittrack-api.onrender.com/dieta
 ```
 
 ## 📫 Como Fazer Requisição no Postman 
-### 🧪 Exemplo: Criar um Novo Treino (POST /treino)
+### 🔁 Rotas Disponíveis - Treinos
+| Método | Rota          | Descrição               |
+| ------ | ------------- | ----------------------- |
+| POST   | `/treino`     | Criar novo treino       |
+| GET    | `/treino`     | Listar todos os treinos |
+| PUT    | `/treino/:id` | Atualizar um treino     |
+| DELETE | `/treino/:id` | Remover um treino       |
+
+---
+
+##@ 🧪 Exemplo: Criar um Novo Treino (POST /treino)
 #### ✅ Pré-requisitos
 - Postman instalado.
 - Servidor da API em execução localmente em `http://localhost:5000`( ou use o backend remoto em `https://fittrack-api.onrender.com`).
+
+
 
 
 ## 🚀 Passo a Passo
@@ -217,10 +229,7 @@ No campo de URL, digite:
 ```bash
 http://localhost:5000/treino
 ```
-💡 Se estiver usando o backend remoto, substitua por:
-```bash
-https://fittrack-api.onrender.com/treino
-```
+
 #### 4. No meu suspenso à esqueda da URL, selecione o método `POST`
 
 #### 5. Clique na aba **"Body"** abaixo da URL.
@@ -249,10 +258,11 @@ https://fittrack-api.onrender.com/treino
     }
   ]
 }
+
 ```
 #### ❗ Certifique-se de que o campo tempo está no formato `45min` e a data no formato `DD/MM/AAAA` conforme as regras de negócio.
 
-#### ⚠️ Após criar o treino abra o bloco de notas e anote o seu `_id ` criado, estará localizado no começo ou no final do arquivo.
+#### 📝 Após criar: Copie o _id retornado no JSON e guarde para usar como treino_id.
 
 ### 8. Clique em "Send"
 
@@ -261,15 +271,61 @@ https://fittrack-api.onrender.com/treino
 - Status: `201 Created`
 - Corpo da resposta: JSON com os dados do treino criado
 
-## 🔁 Rotas Disponíveis - Treinos
-| Método | Rota          | Descrição               |
-| ------ | ------------- | ----------------------- |
-| POST   | `/treino`     | Criar novo treino       |
-| GET    | `/treino`     | Listar todos os treinos |
-| PUT    | `/treino/:id` | Atualizar um treino     |
-| DELETE | `/treino/:id` | Remover um treino       |
+---
+
+### GET `/treino`
+Apenas altere método `POST` para `GET`
+- Método: GET
+
+- URL: 
+`http://localhost:5000/treino`
+
+- ✅ Retorna todos os treinos cadastrados.
+
+---
+
+### ✏️ PUT /treino/:id
+Apenas altere método `GET` para `PUT`
+- URL:
+`http://localhost:5000/treino/<id_do_treino>
+`
+
+Substitua `id_do_treino` pelo valor do _id correspondente ao treino que deseja atualizar.
 
 
+### 🧪 Corpo da Requisição (JSON)
+#### Envie apenas os campos que deseja atualizar:
+```bash
+{
+  "tempo": "60min",
+  "data": "25/05/2025"
+}
+```
+### ✅ Resposta Esperada
+Status: 200 OK
+
+JSON com os dados atualizados do treino.
+
+---
+### ❌ DELETE /dieta/:id
+Método: DELETE
+
+URL:
+```bash
+http://localhost:5000/treino/<_id_do_treino>
+```
+#### Substitua `id_do_treino` pelo valor do _id correspondente ao dieta que deseja deletar.
+
+✅ Remove uma dieta existente com base no _id.
+
+
+## 🔁 Rotas Disponíveis - Dietas
+| Método | Rota         | Descrição              |
+| ------ | ------------ | ---------------------- |
+| POST   | `/dieta`     | Criar nova dieta       |
+| GET    | `/dieta`     | Listar todas as dietas |
+| PUT    | `/dieta/:id` | Atualizar uma dieta    |
+| DELETE | `/dieta/:id` | Remover uma dieta      |
 ## 🧪 Exemplo: Criar uma Nova Dieta (POST /dieta)
 
 ### 🚀 Passo a Passo
@@ -317,25 +373,76 @@ http://localhost:5000/dieta
   ]
 }
 ```
+
 #### ❗ O campo horario deve seguir o formato 24 horas (HH:mm). Datas seguem o padrão DD/MM/AAAA.
 
-#### ⚠️ Após criar o treino abra o bloco de notas e anote o seu `_id ` criado, estará localizado no começo ou no final do arquivo.
-
-
-#### 4. Clique em "Send".
+#### 📝 Após criar: Copie o _id retornado no JSON e guarde para usar como dieta_id.
 
 ### ✅ Resposta Esperada
 #### Se a requisição for bem-sucedida, o Postman exibirá:
 - Status: `201 Created`
 - Corpo da resposta: JSON com os dados do dieta criada
 
-### 🔁 Rotas Disponíveis - Dietas
-| Método | Rota         | Descrição              |
-| ------ | ------------ | ---------------------- |
-| POST   | `/dieta`     | Criar nova dieta       |
-| GET    | `/dieta`     | Listar todas as dietas |
-| PUT    | `/dieta/:id` | Atualizar uma dieta    |
-| DELETE | `/dieta/:id` | Remover uma dieta      |
+--- 
+
+### 🔍 GET /dieta
+Apenas altere método `POST` para `GET`
+
+Método: GET
+
+URL:
+```bash
+http://localhost:5000/dieta
+```
+✅ Retorna todas as dietas cadastradas.
+
+---
+
+### ✏️ PUT /dieta/:id
+Método: PUT
+
+URL:
+```bash
+http://localhost:5000/dieta/<id_da_dieta>
+```
+
+#### Substitua `id_da_dieta` pelo valor do _id correspondente ao dieta que deseja atualizar.
+
+### 🧪 Corpo da Requisição (JSON)
+
+#### Envie apenas os campos que deseja atualizar:
+```bash
+{
+  "tempo": "60min",
+  "data": "25/05/2025"
+}
+
+```
+✅ Resposta Esperada
+Status: 200 OK
+
+JSON com os dados atualizados da dieta.
+
+---
+### ❌ DELETE /dieta/:id
+Método: DELETE
+
+URL:
+```bash
+http://localhost:5000/dieta/<id_da_dieta>
+```
+#### Substitua `id_da_dieta` pelo valor do _id correspondente ao dieta que deseja deletar.
+
+✅ Remove uma dieta existente com base no _id.
+
+
+## 🔁 Rotas Disponíveis – Usuário
+| Método   | Rota        | Descrição                            |
+| -------- | ----------- | ------------------------------------ |
+| `POST`   | `/user`     | Cadastrar um novo usuário            |
+| `GET`    | `/user`     | Listar todos os usuários cadastrados |
+| `PUT`    | `/user/:id` | Atualizar os dados de um usuário     |
+| `DELETE` | `/user/:id` | Remover um usuário do sistema        |
 
 ### 🧪 Exemplo: Criar um Novo Usuário (POST /user)
 
@@ -372,7 +479,75 @@ http://localhost:5000/user
 
 #### ℹ️ O campo IMC é calculado automaticamente pelo backend com base no peso e altura.
 
-### 8. Clique em "Send"
-### ✅ Resposta Esperada
-- #### Status: 201 Created
-- #### JSON com os dados do usuário criado, incluindo o campo IMC calculado
+### 🔍 GET /user
+#### Método: GET
+
+URL:
+```bash
+http://localhost:5000/user
+```
+
+#### ✅ Retorna todos os usuários cadastrados.
+---
+
+### ✏️ PUT /user/:id
+#### Método: PUT
+
+URL:
+```bash
+http://localhost:5000/user/<id_do_usuario>
+```
+
+### 🧪 Corpo da Requisição (JSON)
+
+#### Envie apenas os campos que deseja atualizar:
+#### Substitua `id_do_usuario` pelo valor do _id correspondente ao usuario que deseja atualizar.
+```bash
+{
+  "nome": "João Silva"
+  "email": "joao@email.com"
+}
+
+```
+#### ✅ Resposta Esperada
+#### Status: 200 OK
+
+#### ✅ Atualiza os dados de um usuário específico.
+
+---
+
+### ❌ DELETE /dieta/:id
+Método: DELETE
+
+URL:
+```bash
+http://localhost:5000/user/<id_do_usuario>
+```
+#### Substitua `id_do_usuario` pelo valor do _id correspondente ao usuario que deseja deletar.
+
+✅ Remove uma dieta existente com base no _id.
+
+
+## 🛠 Tecnologias Utilizadas
+### 💻 Backend
+- **Node.js** 
+
+- **Express.js**
+
+- **MongoDB Atlas** 
+
+- **Mongoose**
+
+### 📩 Testes de Requisição
+ - Postman
+
+### 🌍 Deploy e Hospedagem
+ - Render
+
+## 👥 Integrantes do Grupo
+          
+- #### Bruno Araújo Machado       
+- ####  Guilherme Carmo Tavares  
+- ####  Henrique Biciato Lucila  
+- ####  Henzo Bragas Da Silva 
+- ####  Kauê Righetti Cabral  
