@@ -319,6 +319,7 @@ http://localhost:5000/treino/<_id_do_treino>
 
 ✅ Remove uma dieta existente com base no _id.
 
+---
 
 ## 🔁 Rotas Disponíveis - Dietas
 | Método | Rota         | Descrição              |
@@ -436,6 +437,7 @@ http://localhost:5000/dieta/<id_da_dieta>
 
 ✅ Remove uma dieta existente com base no _id.
 
+---
 
 ## 🔁 Rotas Disponíveis – Usuário
 | Método   | Rota        | Descrição                            |
