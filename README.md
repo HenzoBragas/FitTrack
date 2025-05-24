@@ -1,6 +1,6 @@
 
 # 📦 Fit Track
-API REST para gerenciamento de usuários, treinos e dietas, com o foco na perfomace na requisições, com utilização de banco de dados não relacional.
+API REST para gerenciamento de usuários, treinos e dietas, com o foco na performance na requisições, utilizando banco de dados não relacional.
 
 ## 🎯 Objetivo do Projeto
 
@@ -18,16 +18,16 @@ Com esta API, é possível:
 
 - 🥗 Registrar detalhes de dietas, como refeições, horários e alimentos
 
-## 🧠 Sobre a Modelagem
 
+## 🧠 Sobre a Modelagem
 ## ![](./assets/modelagem.png)
 
-A modelagem foi pensada com foco em **incorporação documentos** para garantir uma maior performance nas requisições, retornando ao usário apenas os campos essencias, como ```id```, ```nome``` e ```datas```. 
+A modelagem foi pensada com foco em **incorporação documentos** para garantir uma maior performance nas requisições, retornando ao usuário apenas os campos essenciais, como ```id```, ```nome``` e ```datas```. 
 
 ## **Coleção: `usuarios`**
 #### Campos:
 - _id: Identificador único do usuário.
-- cpf: Número do CPF.
+- CPF: Número do CPF.
 - nome: Nome completo.
 - email: Endereço de e-mail.
 - senha: Senha do usuário.
@@ -79,7 +79,7 @@ Armazena planos de treino independentes dos usuários.
 
 
 ## 🥗 **Coleção: `dieta`**
-Armazena as dietas personalizadas dos usuários, collection  da independente de usuários.
+Armazena as dietas personalizadas dos usuários, coleção independente dos usuários
 
 ### Campos:
 
@@ -118,7 +118,7 @@ Armazena as dietas personalizadas dos usuários, collection  da independente de 
 
 - **Datas** (nas collections `dieta` e `treino` ex: `início/fim` de dieta ou `data` de treino) devem ser inseridas manualmente o formato **brasileiro**  de data (`DD/MM/YYYY`).
 
-- O campo **observacoes** (na coleção `usuarios`) é destinado a **pendências médicas**, como lesões, doenças crônicas e restrições. Caso não haja nenhuma pendência, o preenchimento com `sem restrições` evita campos nulos e permite que todos os usuários tenham o mesmo padrão de documentação médica. Isso é útil em filtros e validações futuras.
+- O campo **observacoes** (na coleção `usuarios`) é destinado a **pendências médicas**, como lesões, doenças crônicas e restrições. Caso não haja nenhuma pendência, o preenchimento com `sem restrições` evita campos nulos e permite que todos os usuários tenham o mesmo padrão de documentação médica padronizada. Isso é útil em filtros e validações futuras.
 
 ## 🗂 Estrutura do Projeto
 O projeto foi desenvolvido em módulos para facilitar a manutenção e evolução do código.
@@ -176,29 +176,30 @@ node server.js
 ```
 
 Se estiver tudo certo, verá no terminal:
-```
+```bash
 Servidor rodando em http://localhost:5000
 Conectado ao Atlas
 ```
 #### ⚠️ Caso ocorra algum erro, verifique se você está no diretório correto e tente novamente.
-## 📬 Rotas disponíveis para requisições (utilize no Postman)
+## 📬 Endpoints da API (para uso no Postman ou outro cliente HTTP)
 - `/user`
 - `/treino`
 - `/dieta`
 
 ## 🌐 Back-end Hospedado (Render)
 Você também pode testar a API através do ambiente hospedado na plataforma Render:
-```
+```bash
 https://fittrack-api.onrender.com
 ```
 Rotas disponíveis no ambiente online:
-```
+```bash
 https://fittrack-api.onrender.com/user
 
 https://fittrack-api.onrender.com/treino
 
 https://fittrack-api.onrender.com/dieta
 ```
+#### ⚠️ Lembre-se de copiar e aplicar tudo o que foi feito no back-end local também no servidor remoto.
 
 ## 📫 Como Fazer Requisição no Postman 
 ### 🔁 Rotas Disponíveis - Treinos
@@ -211,7 +212,7 @@ https://fittrack-api.onrender.com/dieta
 
 ---
 
-##@ 🧪 Exemplo: Criar um Novo Treino (POST /treino)
+## 🧪 Exemplo: Criar um Novo Treino (POST /treino)
 #### ✅ Pré-requisitos
 - Postman instalado.
 - Servidor da API em execução localmente em `http://localhost:5000`( ou use o backend remoto em `https://fittrack-api.onrender.com`).
@@ -230,14 +231,14 @@ No campo de URL, digite:
 http://localhost:5000/treino
 ```
 
-#### 4. No meu suspenso à esqueda da URL, selecione o método `POST`
+#### 4. No meu suspenso à esquerda da URL, selecione o método `POST`
 
 #### 5. Clique na aba **"Body"** abaixo da URL.
 
 #### 6. Marque a opção `raw` e selecione `JSON` no menu ao lado.
 
 #### 7. Cole o seguinte corpo da requisição:
-```bash
+```JSON
 {
   "nome": "Treino ABC",
   "tempo": "45min",
@@ -248,7 +249,7 @@ http://localhost:5000/treino
       "nome": "Supino reto",
       "series": 4,
       "repeticoes": 12,
-      "tempoDecanso": "1min30s"
+      "tempoDescanso": "1min30s"
     },
     {
       "nome": "Crucifixo",
@@ -295,7 +296,7 @@ Substitua `id_do_treino` pelo valor do _id correspondente ao treino que deseja a
 
 ### 🧪 Corpo da Requisição (JSON)
 #### Envie apenas os campos que deseja atualizar:
-```bash
+```JSON
 {
   "tempo": "60min",
   "data": "25/05/2025"
@@ -335,7 +336,7 @@ http://localhost:5000/dieta
 ```
 #### 2. Acesse a aba `Body`, marque `raw` e escolha `JSON`.
 #### 3. Cole o seguinte exemplo de dieta:
-```bash
+```JSON
 {
   "nome": "Dieta Hipercalórica",
   "dataInicio": "10/05/2025",
@@ -411,7 +412,7 @@ http://localhost:5000/dieta/<id_da_dieta>
 ### 🧪 Corpo da Requisição (JSON)
 
 #### Envie apenas os campos que deseja atualizar:
-```bash
+```JSON
 {
   "tempo": "60min",
   "data": "25/05/2025"
@@ -453,7 +454,7 @@ http://localhost:5000/user
 ```
 #### 2. Acesse a aba `Body`, marque `raw` e escolha `JSON`.
 #### 3. Cole o seguinte exemplo de usuario:
-```bash
+```JSON
 {
   "nome": "Ana Lima",
   "cpf": "98765432100",
@@ -465,9 +466,10 @@ http://localhost:5000/user
     "peso": 65,
     "altura": 1.68
   },
-  "observacoes": ["sem restrições"]
+  "observacoes": ["sem restrições"],
   "treino_id": "", 
   "dieta_id": ""
+}
 ```
 ### ⚠️ Atenção
 #### 🔗 Os campos treino_id e dieta_id devem corresponder exatamente aos valores de _id retornados ao criar um treino e uma dieta.
@@ -502,7 +504,7 @@ http://localhost:5000/user/<id_do_usuario>
 
 #### Envie apenas os campos que deseja atualizar:
 #### Substitua `id_do_usuario` pelo valor do _id correspondente ao usuario que deseja atualizar.
-```bash
+```JSON
 {
   "nome": "João Silva"
   "email": "joao@email.com"
