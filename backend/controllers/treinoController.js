@@ -11,6 +11,9 @@ exports.getTreino = async (req, res) => {
 };
 
 // GET - Buscar treino pelo ID
+// Utilizado para buscar um treino específico pelo seu ID,
+// geralmente para incorporar os dados do treino em outras collections (como users).
+// Retorna o treino encontrado ou um erro caso não seja encontrado ou ocorra algum problema.
 exports.getTreinoById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -29,6 +32,7 @@ exports.getTreinoById = async (req, res) => {
 // POST - Criar um novo treino
 exports.createTreino = async (req, res) => {
   try {
+    //Cria uma instância do modelo Treino e salva esse novo documento no banco MongoDB
     const novoTreino = new Treino(req.body);
     const saved = await novoTreino.save();
     res.status(201).json(saved);

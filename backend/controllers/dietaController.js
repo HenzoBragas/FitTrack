@@ -10,7 +10,10 @@ exports.getDieta = async (req, res) => {
   }
 };
 
-// GET - Buscar dieta pelo ID
+
+// Utilizado para buscar um dieta específico pelo seu ID,
+// geralmente para incorporar os dados do dieta em outras collections (como users).
+// Retorna o dieta encontrado ou um erro caso não seja encontrado ou ocorra algum problema.
 exports.getDietaById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -29,6 +32,7 @@ exports.getDietaById = async (req, res) => {
 // POST - Criar uma nova dieta
 exports.createDieta = async (req, res) => {
   try {
+  //Cria uma instância do modelo Treino e salva esse novo documento no banco MongoDB     
     const novaDieta = new Dieta(req.body);
     const saved = await novaDieta.save();
     res.status(201).json(saved);

@@ -16,18 +16,19 @@ const DietaUsuarioSchema = new Schema({
 
 const usuarioSchema = new Schema({
     nome: String, 
-    cpf: Number,
     email: String,
+    cpf: Number,
     senha: String,
     idade: Number,
+    sexo: String,
     medidas: {
         peso: Number,
         altura: Number,
         IMC: Number,
     },
     observacoes: [String],
-    treinos: [TreinoUsuarioSchema],
-    dietas: [DietaUsuarioSchema]
+    treino_id: TreinoUsuarioSchema,
+    dieta_id: DietaUsuarioSchema
 });
 
 module.exports = mongoose.model('User', usuarioSchema);

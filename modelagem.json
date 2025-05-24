@@ -56,6 +56,14 @@
           "error": {}
         },
         {
+          "name": "sexo",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "1d481a4e-27b4-4eb2-9f7c-0b5aa9513d73",
+          "error": {}
+        },
+        {
           "name": "medidas",
           "hackoladeMeta": {},
           "isActivated": true,
@@ -314,66 +322,92 @@
             {
               "hackoladeMeta": {},
               "isActivated": true,
-              "type": "string",
-              "GUID": "9c033c31-e22f-40df-9094-40d8f0bd4619",
-              "arrayItem": true,
-              "displayName": "nomeFicha",
-              "error": {}
-            },
-            {
-              "hackoladeMeta": {},
-              "isActivated": true,
-              "type": "array",
+              "type": "document",
               "properties": [
+                {
+                  "name": "_id",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "objectId",
+                  "GUID": "cb5d751c-8697-43c8-82d9-fe4b786fe349",
+                  "error": {}
+                },
                 {
                   "hackoladeMeta": {},
                   "isActivated": true,
-                  "type": "document",
+                  "type": "string",
+                  "GUID": "8a8e0b8b-24c7-4062-b0a4-027385e9e295",
+                  "error": {
+                    "name": false,
+                    "code": false
+                  },
+                  "name": "nomeFicha",
+                  "foreignCollection": "",
+                  "foreignField": []
+                },
+                {
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "array",
                   "properties": [
                     {
-                      "name": "nome",
                       "hackoladeMeta": {},
                       "isActivated": true,
-                      "type": "string",
-                      "GUID": "d17630ea-1344-4c2b-a7a6-80067d7f190e",
-                      "error": {}
-                    },
-                    {
-                      "name": "series",
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "numeric",
-                      "error": {},
-                      "GUID": "9ea79ba5-7e05-4253-8d22-9efaf419975a"
-                    },
-                    {
-                      "name": "repeticoes",
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "numeric",
-                      "error": {},
-                      "GUID": "666f46d9-341d-4c8f-9823-b9fd7571a54f"
-                    },
-                    {
-                      "name": "tempoDescanso",
-                      "hackoladeMeta": {},
-                      "isActivated": true,
-                      "type": "string",
-                      "GUID": "1c128200-5d6b-4a97-a510-a7a17dfe9ce5",
+                      "type": "document",
+                      "properties": [
+                        {
+                          "name": "nome",
+                          "hackoladeMeta": {},
+                          "isActivated": true,
+                          "type": "string",
+                          "GUID": "683f3188-52d5-4807-8b16-b436f48ae9e6",
+                          "error": {}
+                        },
+                        {
+                          "name": "series",
+                          "hackoladeMeta": {},
+                          "isActivated": true,
+                          "type": "numeric",
+                          "error": {},
+                          "GUID": "a2d4e26a-d49c-4a24-a338-93d62c972117"
+                        },
+                        {
+                          "name": "repeticoes",
+                          "hackoladeMeta": {},
+                          "isActivated": true,
+                          "type": "numeric",
+                          "error": {},
+                          "GUID": "0c3a9265-1941-4a03-a58c-cc94def87580"
+                        },
+                        {
+                          "name": "tempoDescanso",
+                          "hackoladeMeta": {},
+                          "isActivated": true,
+                          "type": "string",
+                          "GUID": "3d847b5d-d398-41c3-a52c-bfa5049c67ab",
+                          "error": {}
+                        }
+                      ],
+                      "additionalProperties": false,
+                      "GUID": "553318b0-6ea6-4391-8753-45f66faf5ff7",
+                      "arrayItem": true,
                       "error": {}
                     }
                   ],
-                  "additionalProperties": false,
-                  "GUID": "0452727e-6034-4ebd-9920-8a72888c8ce4",
-                  "arrayItem": true,
-                  "error": {}
+                  "additionalItems": true,
+                  "error": {
+                    "name": false,
+                    "code": false
+                  },
+                  "GUID": "e442caa6-6c29-4891-b01c-4f092a626a78",
+                  "name": "exercicios",
+                  "foreignCollection": "",
+                  "foreignField": []
                 }
               ],
-              "additionalItems": true,
-              "error": {},
-              "GUID": "b68c5ed0-48b7-4cc6-a414-e56d971762ed",
-              "arrayItem": true,
-              "displayName": "exercicios"
+              "additionalProperties": false,
+              "GUID": "163feac6-b5e7-4596-8692-fc111b8b5f13",
+              "arrayItem": true
             }
           ],
           "additionalItems": true,
@@ -473,6 +507,14 @@
               "type": "document",
               "properties": [
                 {
+                  "name": "_id",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "objectId",
+                  "GUID": "f9a8efaf-2c90-41ca-8fb7-151e0f4a72e6",
+                  "error": {}
+                },
+                {
                   "name": "tipo",
                   "hackoladeMeta": {},
                   "isActivated": true,
@@ -484,7 +526,7 @@
                   "name": "horario",
                   "hackoladeMeta": {},
                   "isActivated": true,
-                  "type": "numeric",
+                  "type": "string",
                   "error": {},
                   "GUID": "4d13cd91-bd60-41af-95ab-cc729d0f2a4e"
                 },
@@ -611,12 +653,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3495.231840859592
+            "x": 4340.452813852815,
+            "y": 3494.829720538229
           },
           {
-            "x": 4383.452813852815,
-            "y": 3495.231840859592
+            "x": 4428.452813852816,
+            "y": 3494.829720538229
           }
         ],
         "sides": [
@@ -656,12 +698,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3580.336639876183
+            "x": 4340.452813852815,
+            "y": 3615.734016791387
           },
           {
-            "x": 4383.452813852815,
-            "y": 3580.336639876183
+            "x": 4428.452813852816,
+            "y": 3615.734016791387
           }
         ],
         "sides": [
@@ -701,12 +743,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3549.43519654599
+            "x": 4340.452813852815,
+            "y": 3571.8337503666016
           },
           {
-            "x": 4383.452813852815,
-            "y": 3549.43519654599
+            "x": 4428.452813852816,
+            "y": 3571.8337503666016
           }
         ],
         "sides": [
@@ -746,12 +788,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3749.715861254485
+            "x": 4340.452813852815,
+            "y": 3854.083054337612
           },
           {
-            "x": 4381.452813852815,
-            "y": 3749.715861254485
+            "x": 4413.652813852814,
+            "y": 3854.083054337612
           }
         ],
         "sides": [
@@ -791,12 +833,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3790.9434017167882
+            "x": 4340.452813852815,
+            "y": 3878.3771791317754
           },
           {
-            "x": 4381.452813852815,
-            "y": 3790.9434017167882
+            "x": 4413.652813852814,
+            "y": 3878.3771791317754
           }
         ],
         "sides": [
@@ -836,12 +878,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3825.7328351511715
+            "x": 4340.452813852815,
+            "y": 3941.764067517813
           },
           {
-            "x": 4381.452813852815,
-            "y": 3825.7328351511715
+            "x": 4413.652813852814,
+            "y": 3941.764067517813
           }
         ],
         "sides": [
@@ -881,12 +923,12 @@
         "dataType": "",
         "shape": [
           {
-            "x": 4301.452813852814,
-            "y": 3861.2663690854242
+            "x": 4340.452813852815,
+            "y": 3917.9692640692665
           },
           {
-            "x": 4381.452813852815,
-            "y": 3861.2663690854242
+            "x": 4413.652813852814,
+            "y": 3917.9692640692665
           }
         ],
         "sides": [
@@ -946,13 +988,18 @@
     "4e6567b7-e09e-44e3-8e72-9c5028675666": "dataFim",
     "bda6b274-5537-43c0-baf6-d2aeb8373e75": "fk_dieta.dataInicio_to_usuarios.dieta.dataInicio",
     "eaf95368-2392-46d1-a6db-333f85561052": "fk_dieta.dataFim_to_usuarios.dieta.dataFim",
-    "d17630ea-1344-4c2b-a7a6-80067d7f190e": "nome",
-    "9ea79ba5-7e05-4253-8d22-9efaf419975a": "series",
-    "666f46d9-341d-4c8f-9823-b9fd7571a54f": "repeticoes",
-    "1c128200-5d6b-4a97-a510-a7a17dfe9ce5": "tempoDescanso",
     "ecc65ffc-0a9c-4866-b80b-7ae84fe3eb33": "nome",
     "1a8a70f9-e42a-4951-a782-09521d9a8fbe": "quantidade",
-    "b3871ea8-3e67-4d35-a801-039fb21e6d42": "medidas"
+    "b3871ea8-3e67-4d35-a801-039fb21e6d42": "medidas",
+    "e442caa6-6c29-4891-b01c-4f092a626a78": "exercicios",
+    "683f3188-52d5-4807-8b16-b436f48ae9e6": "nome",
+    "a2d4e26a-d49c-4a24-a338-93d62c972117": "series",
+    "0c3a9265-1941-4a03-a58c-cc94def87580": "repeticoes",
+    "3d847b5d-d398-41c3-a52c-bfa5049c67ab": "tempoDescanso",
+    "8a8e0b8b-24c7-4062-b0a4-027385e9e295": "nomeFicha",
+    "cb5d751c-8697-43c8-82d9-fe4b786fe349": "_id",
+    "f9a8efaf-2c90-41ca-8fb7-151e0f4a72e6": "_id",
+    "1d481a4e-27b4-4eb2-9f7c-0b5aa9513d73": "sexo"
   },
   "definitions": {
     "type": "definitions",
@@ -977,7 +1024,7 @@
   "creationTS": "2025-05-23T21:22:56.330Z",
   "GUID": "6001e956-12e8-4453-9760-6479e7dea935",
   "isLineageEnabled": false,
-  "lastModifTS": "2025-05-23T22:59:15.867Z",
+  "lastModifTS": "2025-05-24T18:09:07.243Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
@@ -993,26 +1040,26 @@
         "erd": [
           {
             "GUID": "8b58f6b6-c645-4019-84d8-4e44ee782e61",
-            "x": 3888.452813852814,
-            "y": 3443.569264069263,
-            "width": 413,
-            "height": 429,
+            "x": 3933.452813852815,
+            "y": 3418.7692640692644,
+            "width": 407,
+            "height": 535,
             "color": {}
           },
           {
             "GUID": "1f8a6d35-8d0f-4e28-b6dc-3d0b3aa170c6",
-            "x": 4383.452813852815,
-            "y": 3426.569264069263,
-            "width": 324,
-            "height": 249,
+            "x": 4428.452813852816,
+            "y": 3401.7692640692644,
+            "width": 315,
+            "height": 285,
             "color": {}
           },
           {
             "GUID": "43fa1687-1e82-4d79-860c-762721fc2c1c",
-            "x": 4381.452813852815,
-            "y": 3679.569264069263,
-            "width": 330,
-            "height": 270,
+            "x": 4413.652813852814,
+            "y": 3693.169264069269,
+            "width": 327,
+            "height": 305,
             "color": {}
           }
         ],
@@ -1024,8 +1071,8 @@
         },
         "buckets": [
           {
-            "x": 3848.452813852814,
-            "y": 3386.569264069263,
+            "x": 3893.452813852815,
+            "y": 3361.7692640692644,
             "GUID": "f7bbfb33-e4b2-4e5e-9c62-821a96473909"
           }
         ],

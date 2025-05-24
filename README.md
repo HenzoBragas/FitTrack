@@ -1,65 +1,139 @@
 
 # 📦 Fit Track
-
-API REST para gerenciamento de usuários, treinos e dietas, com foco em pessoas que buscam acompanhar seus hábitos de vida saudável.
-
+API REST para gerenciamento de usuários, treinos e dietas, com o foco na perfomace na requisições, com utilização de banco de dados não relacional.
 
 ## 🎯 Objetivo do Projeto
 
-O projeto **Fit Track** foi desenvolvido com o objetivo de facilitar o controle personalizado de treinos e dietas para diferentes usuários. Através dessa API Rest, é possível:
+O projeto **Fit Track** foi desenvolvido com o objetivo de facilitar o controle personalizado de treinos e dietas, utilizando um banco de dados NoSQL, como o MongoDB, com hospedagem em nuvem através do **MongoDB Atlas**.
 
-- Cadastrar e gerenciar perfis de usuários.
-- Associar treinos e dietas específicas a cada usuário.
-- Registrar detalhes como exercícios, tempos de descanso, refeições, horários.
+Com esta API, é possível:
 
-Essa API pode servir como base para uma aplicação front-end mobile ou web, facilitando a organização de rotinas fitness personalizadas.
-<<<<<<< HEAD
-### Modelagem do  Hackloade
-=======
-### Modelagem
+- 📌 Cadastrar e gerenciar perfis de usuários
 
-## ![modelagem](./assest/modelagem.png)
->>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
+- 🏋️ Associar treinos específicos a cada usuário
 
-## ![modelagem hackloade](./assets/modelagem.png)
+- 🍽️ Vincular dietas personalizadas
 
+- 📋 Registrar detalhes de treinos, como fichas e exercícios
+
+- 🥗 Registrar detalhes de dietas, como refeições, horários e alimentos
 
 ## 🧠 Sobre a Modelagem
 
-A modelagem foi pensada com foco em **relacionamentos entre entidades** e **simplicidade de expansão futura**. Os principais modelos são:
+## ![](./assets/modelagem.png)
 
-- **Usuário (`User`)**: contém dados pessoais e referência a um treino e uma dieta específicos.
-- **Treino (`Treino`)**: lista de exercícios, tempo, categoria (ex: força, resistência), etc.
-- **Dieta (`Dieta`)**: conjunto de refeições distribuídas por horários, com foco nutricional.
+A modelagem foi pensada com foco em **incorporação documentos** para garantir uma maior performance nas requisições, retornando ao usário apenas os campos essencias, como ```id```, ```nome``` e ```datas```. 
 
-Cada modelo é independente, mas conectado por meio de incorporação (`treino_id`, `dieta_id`), facilitando tanto a manutenção quanto o reaproveitamento de treinos e dietas entre usuários.
+## **Coleção: `usuarios`**
+#### Campos:
+- _id: Identificador único do usuário.
+- cpf: Número do CPF.
+- nome: Nome completo.
+- email: Endereço de e-mail.
+- senha: Senha do usuário.
+- idade: Idade do usuário.
+- sexo: Gênero do usuário.
+- medidas (documento):
+  - peso
+  - altura
+  - IMC: Cálculo pelo BackEnd
+- observacoes (array): Observações médicas
 
-### Regras de Negócio 
-CPF e senha não podem ser alterados após o cadastro por questões de segurança e integridade dos dados.
+- 📌 Treino (subdocumento):
+  - _id: Referência ao treino.
+  - nome: Nome do treino.
+  - data: Data do início do treino: (ex: ```10/01/2025``` )
 
-Datas (como data de criação da dieta ou treino) devem ser inseridas manualmente pelo usuário, promovendo maior controle sobre o registro histórico.
+- 📌 dieta (subdocumento):
+   - _id: Referência à dieta.
+   - nome: Nome da dieta.
+   - dataInicio: Data de início. (ex:  ```10/01/2025``` )
+    - dataFim: Data de término. (ex: ```10/01/2025``` )
 
-O campo "observações" no modelo de usuário é destinado ao registro de pendências médicas, como lesões ou doenças crônicas, sendo importante para orientar a personalização de treinos e dietas.
+## 🏋️  **Coleção: `treino`**
+Armazena planos de treino independentes dos usuários.
+#### Campos:
+- _id: Identificador único do treino.
 
----
+- nome: Nome do plano de treino.
+
+- tempo: Duração do treino (ex: `45min`).
+
+- data: Data da criação (ex:`10/01/2025`)
+
+- ficha (array de documentos):
+
+- _id: Identificador da ficha.
+
+  -  nomeFicha: Nome da ficha.
+
+  -  exercicios (array de documentos):
+    - nome: Nome do exercício.
+
+    - series: Quantidade de séries. (ex: `3`)
+
+    - repeticoes: Número de repetições. (ex: `12`)
+
+    - tempoDescanso: Tempo de descanso entre as séries. Dado em minutos e segundos (ex: `1min20s`)
+
+
+
+## 🥗 **Coleção: `dieta`**
+Armazena as dietas personalizadas dos usuários, collection  da independente de usuários.
+
+### Campos:
+
+- _id: Identificador único da dieta.
+
+- nome: Nome do plano alimentar.
+
+- dataInicio: Data de início da dieta.
+
+- dataFim: Data de término da dieta.
+
+- objetivo: Objetivo da dieta (ex: emagrecer, ganhar massa, etc.).
+
+- refeicoes (array de documentos):
+
+  - _id: Identificador da refeição.
+
+  - tipo: Tipo da refeição (ex: café da manhã, almoço).
+
+  - horario: Horário da refeição formato 24h (ex: `08:00`)
+
+  - alimentos (array de documentos):
+
+    - nome: Nome do alimento.
+    - quantidade: Quantidade (gramas).
+
+
+
+
+## 📌 Regras de Negócio
+- O campo **IMC** (collection `usuario`) é calculado automaticamente pelo backend com base em `peso` e `altura`. O resultado é arredondado para **duas casas decimais**.
+
+- O campo **tempo** (na coleção `treino`) deve seguir o padrão `45min` garante **uniformidade na inserção e leitura dos dados**, facilitando a manipulação e visualização posterior.
+
+- O campo **horario** (na coleção `dieta`) deve estar no formato 24 horas, como `08:00`, para evitar ambiguidades entrer manhãs e tarde/noite(ex:  `08:00` vs `8:00PM`). Permitindo maior compatibilidade com bibliotecas de data/hora, além de simplificar cálculos de horários e notificações.
+
+- **Datas** (nas collections `dieta` e `treino` ex: `início/fim` de dieta ou `data` de treino) devem ser inseridas manualmente o formato **brasileiro**  de data (`DD/MM/YYYY`).
+
+- O campo **observacoes** (na coleção `usuarios`) é destinado a **pendências médicas**, como lesões, doenças crônicas e restrições. Caso não haja nenhuma pendência, o preenchimento com `sem restrições` evita campos nulos e permite que todos os usuários tenham o mesmo padrão de documentação médica. Isso é útil em filtros e validações futuras.
 
 ## 🗂 Estrutura do Projeto
+O projeto foi desenvolvido em módulos para facilitar a manutenção e evolução do código.
 
 ```
-├── backend
-│   ├── controllers        # Camada de controle das rotas
-│   ├── models             # Definição dos modelos
-│   ├── routes             # Arquivo de rotas da aplicação
-│   └── server.js          # Arquivo principal da aplicação
 ├── assets  
-    ├── modelgagem.png     # Modelagem da documentação
-├── package.json           # Gerenciador de dependências
-├── package-lock.json      # dependências do projeto
-├── node_modules           # dependências do projeto
-<<<<<<< HEAD
-=======
-├── assest                 #Imagem da Modlelagem 
->>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
+│    ├── modelgagem.png     # imagem da modelagem da documentação
+├── backend
+│   ├── controllers        # Lógica de controle das requisições da API
+│   ├── models             # Definição dos esquemas/modelos do MongoDB
+│   ├── routes             # Arquivos com as rotas da aplicação
+│   └── server.js          # Arquivo principal da aplicação
+├── package.json           # Gerenciador de dependências e scripts do projeto
+├── package-lock.json      # Arquivo de bloqueio de versões das dependências
+├── node_modules           # Diretório onde ficam as dependências instaladas
 ├── README.md              # Documentação do projeto
 
 ```
@@ -71,29 +145,32 @@ O campo "observações" no modelo de usuário é destinado ao registro de pendê
 - npm
 - Git
 - Visual Studio Code
-- Cliente HTTP (Insomnia, Postman ou Thunder Client)
+- Um cliente HTTP (como **Postman**, **Insomnia** ou **Thunder Client**)
 
-#### Neste caso foi utilizado o Postman, mas fique á vontade de para outro Cliente HTTP.
+#### 💡  Neste projeto foi utilizado o Postman, mas você pode utilizar o cliente HTTP de sua preferência.
 ---
 
-### 💻 Execução 
+### 💻 Execução Local
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/usuario/nome-do-projeto.git
+git clone https://github.com/HenzoBragas/FitTrack.git
 ```
 
 2. Acesse a pasta do projeto:
 ```bash
-cd backend
+cd FitTrack
 ```
-
-3. Instale as dependências:
+3. Navegue até o diretório do backend:
+```bash
+cd backend 
+```
+4. Instale as dependências:
 ```bash
 npm install
 ```
 
-4. Inicie o servidor:
+5. Inicie o servidor:
 ```bash
 node server.js
 ```
@@ -103,55 +180,20 @@ Se estiver tudo certo, verá no terminal:
 Servidor rodando em http://localhost:5000
 Conectado ao Atlas
 ```
-#### Se ocorrer algum erro verifique se você está na raiz do projeto e execute novamente
-
-<<<<<<< HEAD
-#### Utilize essa URL no Postman como as rotas:
-=======
----
-
-### 🌐 Execução Remota
-
-Você pode acessar a API diretamente pelo back-end hospedado no Render:
-
-```
-https://fittrack-mq85.onrender.com
-```
-
-Utilize essa URL no  Postman com as rotas:
->>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
+#### ⚠️ Caso ocorra algum erro, verifique se você está no diretório correto e tente novamente.
+## 📬 Rotas disponíveis para requisições (utilize no Postman)
 - `/user`
 - `/treino`
 - `/dieta`
 
-<<<<<<< HEAD
-## 🌐 Back-end Remoto
-Você também pode acessar o back-end hospedado remotamente pela platoforma Render:
+## 🌐 Back-end Hospedado (Render)
+Você também pode testar a API através do ambiente hospedado na plataforma Render:
 ```
 https://fittrack-api.onrender.com
 ```
-Utilize essas URLs como base no Postman:
+Rotas disponíveis no ambiente online:
 ```
 https://fittrack-api.onrender.com/user
-=======
-### 📝 3. Crie uma nova requisição
-Abra o Postman
-
-Clique em "New" > "HTTP Request"
-
-Escolha o método da requisição (ex: POST, GET, PUT, DELETE)
-
-No campo de URL, insira o endpoint. Exemplo para criar um treino:
-```
-https://fittrack-mq85.onrender.com/treino
-```
-ou 
-```
-http://localhost:5000/treino
-```
-
-
->>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
 
 https://fittrack-api.onrender.com/treino
 
@@ -159,200 +201,178 @@ https://fittrack-api.onrender.com/dieta
 ```
 
 ## 📫 Como Fazer Requisição no Postman 
-### 🧪 Exemplo: Criar um novo treino (POST /treino)
+### 🧪 Exemplo: Criar um Novo Treino (POST /treino)
 #### ✅ Pré-requisitos
-- Postman instalado (ou versão web).
-- Servidor da API em execução localmente (http://localhost:5000), replique se for caso do back end remoto
+- Postman instalado.
+- Servidor da API em execução localmente em `http://localhost:5000`( ou use o backend remoto em `https://fittrack-api.onrender.com`).
 
 
-### 🚀 Passo a Passo
-Abra o Postman.
+## 🚀 Passo a Passo
 
-Clique em "New" > "HTTP Request".
+### 1. Abra o Postman.
+
+#### 2. Clique em **"New"** > **"HTTP Request"**.
 
 No campo de URL, digite:
 ```bash
 http://localhost:5000/treino
 ```
-No menu suspenso à esquerda da URL, selecione o método POST.
+💡 Se estiver usando o backend remoto, substitua por:
+```bash
+https://fittrack-api.onrender.com/treino
+```
+#### 4. No meu suspenso à esqueda da URL, selecione o método `POST`
 
-Clique na aba "Body" abaixo da URL.
+#### 5. Clique na aba **"Body"** abaixo da URL.
 
-Marque a opção "raw" e selecione "JSON" no menu ao lado.
+#### 6. Marque a opção `raw` e selecione `JSON` no menu ao lado.
 
-Cole o seguinte JSON de exemplo:
+#### 7. Cole o seguinte corpo da requisição:
 ```bash
 {
-  "nome": "Treino A - Superior",
-  "descricao": "Treino focado nos músculos superiores",
-  "tempo": "45 min",
-  "categoria": "Força",
-  "data": "2025-05-20",
-  "exercicios": [
+  "nome": "Treino ABC",
+  "tempo": "45min",
+  "data": "20/05/2025",
+  "fichas": [
+    "nomeFicha": "A - Peito e Tríceps"
     {
       "nome": "Supino reto",
       "series": 4,
       "repeticoes": 12,
-      "descansoSeries": "1min30s"
+      "tempoDecanso": "1min30s"
     },
     {
       "nome": "Crucifixo",
       "series": 3,
       "repeticoes": 10,
-      "descansoSeries": "1min20s"
+      "tempoDescanso": "1min20s"
     }
   ]
 }
 ```
-### Clique em "Send"
+#### ❗ Certifique-se de que o campo tempo está no formato `45min` e a data no formato `DD/MM/AAAA` conforme as regras de negócio.
 
-### ✅ Resposta esperada
-Se a requisição for bem-sucedida, você verá uma resposta no painel inferior com status 201 Created e o JSON do treino criado.
+#### ⚠️ Após criar o treino abra o bloco de notas e anote o seu `_id ` criado, estará localizado no começo ou no final do arquivo.
 
-## 🔁 Rotas e Exemplo de Dados
+### 8. Clique em "Send"
+
+### ✅ Resposta Esperada
+#### Se a requisição for bem-sucedida, o Postman exibirá:
+- Status: `201 Created`
+- Corpo da resposta: JSON com os dados do treino criado
+
+## 🔁 Rotas Disponíveis - Treinos
+| Método | Rota          | Descrição               |
+| ------ | ------------- | ----------------------- |
+| POST   | `/treino`     | Criar novo treino       |
+| GET    | `/treino`     | Listar todos os treinos |
+| PUT    | `/treino/:id` | Atualizar um treino     |
+| DELETE | `/treino/:id` | Remover um treino       |
 
 
-- `POST /treino` – Criar novo treino
-- `GET /treino` – Listar treino
-- `PUT /treino/:id` – Atualizar treino
-- `DELETE /treino/:id` – Deletar treino
+## 🧪 Exemplo: Criar uma Nova Dieta (POST /dieta)
 
-### 🏋️ Treinos
-### Metódo POST
-**Exemplo JSON:**
-```json
-{
-  "nome": "Treino A - Superior",
-  "descricao": "Treino focado nos músculos superiores",
-  "tempo": "45 min",
-  "categoria": "Força",
-  "data": "2025-05-20",
-  "exercicios": [
-    {
-      "nome": "Supino reto",
-      "series": 4,
-      "repeticoes": 12,
-      "descansoSeries": "1min30s"
-    },
-    {
-      "nome": "Crucifixo",
-      "series": 3,
-      "repeticoes": 10,
-      "descansoSeries": "1min20s"
-    }
-  ]
-}
-
+### 🚀 Passo a Passo
+#### 1. Crie uma nova requisição:
+```bash 
+http://localhost:5000/dieta
 ```
-### Metódo PUT
-```json
-{
-  "nome": "Treino B - Inferiores",
-  "descricao": "Treino focado nos músculos inferiores",
-  "tempo": "45 min",
-  "categoria": "Força",
-  "data": "2025-05-20",
-  "exercicios": [
-    {
-      "nome": "agachamento livre",
-      "series": 4,
-      "repeticoes": 12,
-      "descansoSeries": "1min30s"
-    },
-    {
-      "nome": "Legpress",
-      "series": 3,
-      "repeticoes": 10,
-      "descansoSeries": "1min20s"
-    }
-  ]
-}
-
-```
-### 🥗 Dietas
-### Metodo POST
-**Exemplo JSON:**
-```json
+#### 2. Acesse a aba `Body`, marque `raw` e escolha `JSON`.
+#### 3. Cole o seguinte exemplo de dieta:
+```bash
 {
   "nome": "Dieta Hipercalórica",
-  "descricao": "Alta ingestão calórica para ganho de massa",
-  "data": "2025-05-20",
+  "dataInicio": "10/05/2025",
+  "dataFim": "10/06/2025",
+  "objetivo": "ganhar massa",
   "refeicoes": [
     {
-      "horario": "8:00",
-      "descricao": ["Ovos", "Pão integral", "Suco de laranja"]
+      "tipo": "Café da manhã",
+      "horario": "08:00",
+      "alimentos": [
+        {
+          "nome": "Ovos",
+          "quantidade": "3 unidades"
+        },
+        {
+          "nome": "Aveia",
+          "quantidade": "2 colheres"
+        }
+      ]
     },
     {
-      "horario": "12:00",
-      "descricao": ["Arroz", "Feijão", "Frango grelhado", "Salada"]
+      "tipo": "Almoço",
+      "horario": "12:30",
+      "alimentos": [
+        {
+          "nome": "Arroz integral",
+          "quantidade": "100g"
+        },
+        {
+          "nome": "Frango grelhado",
+          "quantidade": "150g"
+        }
+      ]
     }
   ]
 }
 ```
-### Metodo PUT
-```json
-{
-  "nome": "Dieta emagrecimento",
-  "descricao": "Baixa ingestão calórica para perda de peso",
-  "data": "2025-05-20",
-  "refeicoes": [
-    {
-      "horario": "8:00",
-      "descricao": ["Ovos", "Pão integral", "Suco de laranja"]
-    },
-    {
-      "horario": "12:00",
-      "descricao": ["Arroz", "Feijão", "Frango grelhado", "Salada"]
-    }
-  ]
-}
+#### ❗ O campo horario deve seguir o formato 24 horas (HH:mm). Datas seguem o padrão DD/MM/AAAA.
+
+#### ⚠️ Após criar o treino abra o bloco de notas e anote o seu `_id ` criado, estará localizado no começo ou no final do arquivo.
+
+
+#### 4. Clique em "Send".
+
+### ✅ Resposta Esperada
+#### Se a requisição for bem-sucedida, o Postman exibirá:
+- Status: `201 Created`
+- Corpo da resposta: JSON com os dados do dieta criada
+
+### 🔁 Rotas Disponíveis - Dietas
+| Método | Rota         | Descrição              |
+| ------ | ------------ | ---------------------- |
+| POST   | `/dieta`     | Criar nova dieta       |
+| GET    | `/dieta`     | Listar todas as dietas |
+| PUT    | `/dieta/:id` | Atualizar uma dieta    |
+| DELETE | `/dieta/:id` | Remover uma dieta      |
+
+### 🧪 Exemplo: Criar um Novo Usuário (POST /user)
+
+### 🚀 Passo a Passo
+#### 1. Crie uma nova requisição:
+```bash 
+http://localhost:5000/user
 ```
-
-### 👤 Usuários
-### Metodo POST
-**Exemplo JSON:**
-```json
+#### 2. Acesse a aba `Body`, marque `raw` e escolha `JSON`.
+#### 3. Cole o seguinte exemplo de usuario:
+```bash
 {
-  "nome": "João da Silva",
-  "cpf": "12312312312",
-  "email": "joao@email.com",
-  "senha": "123456",
-  "idade": 25,
-  "altura": 1.75,
-  "observações": "lesão no joelho direito",
-  "treino_id": "treino123",
-  "dieta_id": "dieta123"
-}
+  "nome": "Ana Lima",
+  "cpf": "98765432100",
+  "email": "ana.lima@example.com",
+  "senha": "senha123",
+  "idade": 28,
+  "sexo": "Feminino",
+  "medidas": {
+    "peso": 65,
+    "altura": 1.68
+  },
+  "observacoes": ["sem restrições"]
+  "treino_id": "", 
+  "dieta_id": ""
 ```
-### Metodo PUT 
-```json
-{
-  "nome": "João da Silvas",
-  "email": "joaoSilva@email.com",
-  "altura": 1.85,
-  "observações": "Sem restrições",
-}
-```
+### ⚠️ Atenção
+#### 🔗 Os campos treino_id e dieta_id devem corresponder exatamente aos valores de _id retornados ao criar um treino e uma dieta.
+- ⚠️ Copie os _id gerados nas requisições de criação de treino e criação de dieta.
 
-## 🛠 Tecnologias Utilizadas
-- Node.js
-- Express
-- MongoDB (Atlas)
-- Mongoose
-- Postman (testes das rotas)
+- Cole esses valores nos campos treino_id e dieta_id ao criar um usuário.
 
-## 👥 Integrantes do Projeto
-Bruno Araujo
+- Isso garante que o usuário será corretamente associado ao treino e à dieta.
 
-Guilherme do Carmo
+#### ℹ️ O campo IMC é calculado automaticamente pelo backend com base no peso e altura.
 
-Henrique Lucila Bicato
-
-Henzo Bragas Da Silva
-
-Kaue Gahetti
-
-<<<<<<< HEAD
-=======
----
->>>>>>> 06cbd0b8c9753e07b184c789d1420c6d6062aa94
+### 8. Clique em "Send"
+### ✅ Resposta Esperada
+- #### Status: 201 Created
+- #### JSON com os dados do usuário criado, incluindo o campo IMC calculado
