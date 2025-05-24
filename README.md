@@ -531,6 +531,7 @@ http://localhost:5000/user/<id_do_usuario>
 
 ✅ Remove uma dieta existente com base no _id.
 
+---
 
 ## 🛠 Tecnologias Utilizadas
 ### 💻 Backend
