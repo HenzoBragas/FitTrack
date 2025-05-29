@@ -208,17 +208,17 @@ Conectado ao Atlas
 Você também pode testar a API através do ambiente hospedado na plataforma Render:
 
 ```bash
-https://fittrack-api.onrender.com
+https://fittrack-mq85.onrender.com
 ```
 
 Rotas disponíveis no ambiente online:
 
 ```bash
-https://fittrack-api.onrender.com/user
+https://fittrack-mq85.onrender.com/user
 
-https://fittrack-api.onrender.com/treino
+https://fittrack-mq85.onrender.com/treino
 
-https://fittrack-api.onrender.com/dieta
+https://fittrack-mq85.onrender.com/dieta
 ```
 
 #### ⚠️ Lembre-se de copiar e aplicar tudo o que foi feito no back-end local também no servidor remoto.
