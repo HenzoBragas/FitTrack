@@ -147,10 +147,9 @@ O projeto foi desenvolvido em módulos para facilitar a manutenção e evoluçã
 
 ### ✅ Pré-requisitos
 
-- Node.js
-- npm
-- Git
-- Visual Studio Code
+- [Node.js](https://nodejs.org/)
+- [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 - Um cliente HTTP (como **Postman**, **Insomnia** ou **Thunder Client**)
 
 #### 💡 Neste projeto foi utilizado o Postman, mas você pode utilizar o cliente HTTP de sua preferência.
