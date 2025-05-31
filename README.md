@@ -270,7 +270,8 @@ http://localhost:5000/treino
   "data": "20/05/2025",
   "fichas": [
     {
-      "nomeFicha": "A - Peito e Tríceps"
+      "nomeFicha": "A - Peito e Tríceps",
+      "exercicios":
       {
         "nome": "Supino reto",
         "series": 4,
