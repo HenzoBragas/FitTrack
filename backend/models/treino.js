@@ -15,8 +15,8 @@ const FichaSchema = new Schema({
 
 const TreinoSchema = new Schema({
   nome: String,
-  tempo: Number,
-  data: Date,
+  tempo: String,
+  data: String,
   fichas: [FichaSchema]
 });
 

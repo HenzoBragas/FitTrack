@@ -10,14 +10,14 @@ const AlimentoSchema = new Schema({
 // Subschema de refeições COM _id
 const RefeicaoSchema = new Schema({
   tipo: String,
-  horario: Number,
+  horario: String,
   alimentos: [AlimentoSchema]
 });
 
 const DietaSchema = new Schema({
   nome: String,
-  dataInicio: Date,
-  dataFim: Date,
+  dataInicio: String,
+  dataFim: String,
   objetivo: String,
   refeicoes: [RefeicaoSchema]
 });

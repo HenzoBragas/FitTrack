@@ -156,17 +156,12 @@
               "name": "data",
               "hackoladeMeta": {},
               "isActivated": true,
-              "type": "date",
+              "type": "string",
+              "error": {},
               "primaryKey": false,
               "GUID": "27d58c4d-e57d-4088-919b-3308cfe91cb3",
-              "error": {},
-              "relationshipType": "Foreign Master",
-              "foreignCollection": "1f8a6d35-8d0f-4e28-b6dc-3d0b3aa170c6",
-              "foreignField": [
-                "1f8a6d35-8d0f-4e28-b6dc-3d0b3aa170c6",
-                "fdfea5d0-ec5d-43c3-b6cd-a8f78d28ea5f"
-              ],
-              "parentRelationship": "76294c58-2f74-4438-853f-e04f145b2377"
+              "parentRelationship": "76294c58-2f74-4438-853f-e04f145b2377",
+              "relationshipType": "Foreign Master"
             }
           ],
           "additionalProperties": false,
@@ -213,33 +208,23 @@
               "name": "dataInicio",
               "hackoladeMeta": {},
               "isActivated": true,
-              "type": "date",
+              "type": "string",
+              "error": {},
               "primaryKey": false,
               "GUID": "d19b752d-e2d9-47da-a5f7-f003267f03af",
-              "error": {},
-              "relationshipType": "Foreign Master",
-              "foreignCollection": "43fa1687-1e82-4d79-860c-762721fc2c1c",
-              "foreignField": [
-                "43fa1687-1e82-4d79-860c-762721fc2c1c",
-                "fd255df6-3087-4185-bdf6-9a24bbd90c1f"
-              ],
-              "parentRelationship": "bda6b274-5537-43c0-baf6-d2aeb8373e75"
+              "parentRelationship": "bda6b274-5537-43c0-baf6-d2aeb8373e75",
+              "relationshipType": "Foreign Master"
             },
             {
               "name": "dataFim",
               "hackoladeMeta": {},
               "isActivated": true,
-              "type": "date",
+              "type": "string",
+              "error": {},
               "primaryKey": false,
               "GUID": "4e6567b7-e09e-44e3-8e72-9c5028675666",
-              "error": {},
-              "relationshipType": "Foreign Master",
-              "foreignCollection": "43fa1687-1e82-4d79-860c-762721fc2c1c",
-              "foreignField": [
-                "43fa1687-1e82-4d79-860c-762721fc2c1c",
-                "2f63b4dd-0bb0-4e39-a908-28feb0294df1"
-              ],
-              "parentRelationship": "eaf95368-2392-46d1-a6db-333f85561052"
+              "parentRelationship": "eaf95368-2392-46d1-a6db-333f85561052",
+              "relationshipType": "Foreign Master"
             }
           ],
           "additionalProperties": false,
@@ -298,7 +283,7 @@
           "name": "tempo",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "numeric",
+          "type": "string",
           "error": {},
           "GUID": "5ab0b28c-5ea1-4700-b6e3-ee94f99afe69"
         },
@@ -306,9 +291,9 @@
           "name": "data",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "date",
-          "primaryKey": false,
+          "type": "string",
           "error": {},
+          "primaryKey": false,
           "GUID": "fdfea5d0-ec5d-43c3-b6cd-a8f78d28ea5f",
           "childRelationships": [
             "76294c58-2f74-4438-853f-e04f145b2377"
@@ -467,10 +452,10 @@
           "name": "dataInicio",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "date",
+          "type": "string",
+          "error": {},
           "primaryKey": false,
           "GUID": "fd255df6-3087-4185-bdf6-9a24bbd90c1f",
-          "error": {},
           "childRelationships": [
             "bda6b274-5537-43c0-baf6-d2aeb8373e75"
           ]
@@ -479,9 +464,9 @@
           "name": "dataFim",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "date",
-          "primaryKey": false,
+          "type": "string",
           "error": {},
+          "primaryKey": false,
           "GUID": "2f63b4dd-0bb0-4e39-a908-28feb0294df1",
           "childRelationships": [
             "eaf95368-2392-46d1-a6db-333f85561052"
@@ -1024,7 +1009,7 @@
   "creationTS": "2025-05-23T21:22:56.330Z",
   "GUID": "6001e956-12e8-4453-9760-6479e7dea935",
   "isLineageEnabled": false,
-  "lastModifTS": "2025-05-24T18:09:07.243Z",
+  "lastModifTS": "2025-05-31T00:25:02.504Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {

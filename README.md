@@ -271,22 +271,24 @@ http://localhost:5000/treino
   "fichas": [
     {
       "nomeFicha": "A - Peito e Tríceps",
-      "exercicios":
-      {
-        "nome": "Supino reto",
-        "series": 4,
-        "repeticoes": 12,
-        "tempoDescanso": "1min30s"
-      },
-      {
-        "nome": "Crucifixo",
-        "series": 3,
-        "repeticoes": 10,
-        "tempoDescanso": "1min20s"
-      }
+      "exercicios": [
+        {
+          "nome": "Supino reto",
+          "series": 4,
+          "repeticoes": 12,
+          "tempoDescanso": "1min30s"
+        },
+        {
+          "nome": "Crucifixo",
+          "series": 3,
+          "repeticoes": 10,
+          "tempoDescanso": "1min20s"
+        }
+      ]
     }
   ]
 }
+
 
 ```
 
@@ -315,6 +317,9 @@ Apenas altere método `POST` para `GET`
   `http://localhost:5000/treino`
 
 - ✅ Retorna todos os treinos cadastrados.
+
+ #### ⚠️ Campo __v
+#### O campo __v é um campo interno do Mongoose usado para controlar a versão do documento no MongoDB. Ele ajuda a gerenciar concorrência e evitar conflitos durante atualizações simultâneas.
 
 ---
 
@@ -452,6 +457,7 @@ http://localhost:5000/dieta
 
 ✅ Retorna todas as dietas cadastradas.
 
+
 ---
 
 ### ✏️ PUT /dieta/:id
@@ -537,8 +543,8 @@ http://localhost:5000/user
     "altura": 1.68
   },
   "observacoes": ["sem restrições"],
-  "treino_id": "",
-  "dieta_id": ""
+  "treino_id":"",
+  "dieta_id":"" 
 }
 ```
 

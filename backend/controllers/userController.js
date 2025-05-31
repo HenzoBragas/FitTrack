@@ -34,13 +34,12 @@ exports.createUser = async (req, res) => {
     //Calcula IMC e verifica peso e altura
     const peso = newUser.medidas?.peso;
     const altura = newUser.medidas?.altura;
-
     if (!peso || !altura) {
       return res.status(400).json({
         message: "Peso e altura são obrigatórios para calcular o IMC.",
       });
     }
-
+   
     const imcCalculado = peso / altura ** 2;
 
     // Cria newUserData com os dados do req.body, atualiza medidas com IMC calculado
